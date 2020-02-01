@@ -1,7 +1,7 @@
 <template>
     <div>
         <UserInfo :userInfo="userInfo"
-                  :imgSrc="imgSrc"></UserInfo>
+                  ></UserInfo>
 
         <Post v-for="post in posts"
               :key="post"
@@ -25,6 +25,7 @@ export default {
         return {
             userInfo: null,
             posts: null,
+            usersApiLink: 'http://188.225.47.187/api/jsonstorage/becdad4189eaa8404ae78ea212088da8'
         }
     },
     mounted() {
@@ -32,7 +33,7 @@ export default {
         this.getPosts()
     },
     methods: {
-        getUserInfo() {
+        getFUserInfo() {
             //alert('пытаюсь')
             this.axios.get('https://jsonplaceholder.typicode.com/users/' + this.$route.params.id)
             .then(response => {
@@ -43,6 +44,14 @@ export default {
                 alert('не получилось загрузить данные')
             })
             //alert('я пытался')
+        },
+        getUserInfo() {
+            this.axios.get(this.usersApiLink)
+            .then(
+                (response) => {
+                    this.userInfo = response.data[this.$route.params.id]
+                } 
+            )
         },
         getPosts() {
             //alert(`https://jsonplaceholder.typicode.com/user/${this.$route.params.id}/posts`)

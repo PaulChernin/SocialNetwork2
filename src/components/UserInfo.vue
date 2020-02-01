@@ -10,7 +10,7 @@
         </v-row>
         <v-row class="text-left">
             <v-col cols="2">
-                <img :src="imgSrc" style="max-width: 100%">
+                <img :src="userInfo.photo" style="max-width: 100%">
             </v-col>
             <v-col cols="10" class="text-left">
                 <p>
@@ -20,10 +20,10 @@
                     E-mail: <a :href="'mailto:' + userInfo.email">{{userInfo.email}}</a>
                 </p>
                 <p>
-                    Город: {{userInfo.address.city}}
+                    Город: {{userInfo.city}}
                 </p>
                 <p>
-                    Место работы: {{userInfo.company.name}}
+                    Место работы: {{userInfo.company}}
                 </p>
             </v-col>
         </v-row>
@@ -34,8 +34,7 @@
 export default {
     name: 'UserInfo',
     props: {
-        userInfo: {},
-        imgSrc: String
+        userInfo: {}
     }
 }
 </script>
