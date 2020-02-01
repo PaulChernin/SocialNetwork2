@@ -48,7 +48,8 @@ export default {
                         email: '',
                         city: '',
                         company: '',
-                        photo: 'https://randomuser.me/api/portraits/men/4.jpg'
+                        photo: 'https://randomuser.me/api/portraits/men/4.jpg',
+                        id: users.length
                     }
                     users.push(newUser)
                     this.axios.put(this.usersApiLink, users)

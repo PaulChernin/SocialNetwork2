@@ -30,22 +30,7 @@ export default {
   methods: {
     updateCurrentUser(index) {
       this.currentUserId = index
-    },
-    updateUsers() {
-      
-    },
-    // getData() {
-    //   this.axios.get(this.apiLinks.users)
-    //   .then(
-    //     (response) => {
-    //       this.users = response.data
-    //     }
-    //   )
-    // }
-  },
-  mounted() {
-    //this.$router.push('/home')
-    //this.getData()
+    }
   }
 }
 </script>
