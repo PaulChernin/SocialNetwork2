@@ -1,10 +1,11 @@
 <template>
   <v-app id="app">
-    <NavigationDrawer></NavigationDrawer>
+    <NavigationDrawer :currentUserIndex="currentUserId"></NavigationDrawer>
 
     <v-content class="px-12 py-3">
       <v-container fluid>
-        <router-view/>
+        <!-- {{currentUserId}} -->
+        <router-view v-on:login="updateCurrentUser"/>
       </v-container>
     </v-content>
   </v-app>
@@ -16,6 +17,35 @@ import NavigationDrawer from './components/NavigationDrawer'
 export default {
   components: {
     NavigationDrawer
+  },
+  data() {
+    return {
+      currentUserId: 1,
+      //users: [],
+      apiLinks: {
+        users: 'http://188.225.47.187/api/jsonstorage/becdad4189eaa8404ae78ea212088da8'
+      }
+    }
+  },
+  methods: {
+    updateCurrentUser(index) {
+      this.currentUserId = index
+    },
+    updateUsers() {
+      
+    },
+    // getData() {
+    //   this.axios.get(this.apiLinks.users)
+    //   .then(
+    //     (response) => {
+    //       this.users = response.data
+    //     }
+    //   )
+    // }
+  },
+  mounted() {
+    //this.$router.push('/home')
+    //this.getData()
   }
 }
 </script>
