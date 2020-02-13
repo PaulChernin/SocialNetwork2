@@ -1,9 +1,13 @@
 <template>
   <v-app id="app">
-    <NavigationDrawer :currentUserIndex="currentUserId"></NavigationDrawer>
+    <NavigationDrawer></NavigationDrawer>
 
     <v-content class="px-12 py-3">
       <v-container fluid>
+        <input type="text" v-model="newId">
+        <button @click="updateCurrentUser">update</button>
+        {{currentUserId}}
+
         <!-- {{currentUserId}} -->
         <router-view v-on:login="updateCurrentUser"/>
       </v-container>
@@ -20,16 +24,23 @@ export default {
   },
   data() {
     return {
-      currentUserId: 1,
-      //users: [],
+      //currentUserId: 1,
+      newId: 0,
       apiLinks: {
         users: 'http://188.225.47.187/api/jsonstorage/becdad4189eaa8404ae78ea212088da8'
       }
     }
   },
+  computed: {
+    currentUserId() {
+      return this.$store.getters.currentUserId
+    }
+  },
   methods: {
-    updateCurrentUser(index) {
-      this.currentUserId = index
+    updateCurrentUser() {
+      //this.currentUserId = index
+      //alert('g'),
+      this.$store.dispatch('updateCurrentUser', this.newId)
     }
   }
 }

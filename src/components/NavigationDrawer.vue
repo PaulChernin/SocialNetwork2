@@ -54,7 +54,7 @@ export default {
     data() {
         return {
             usersApiLink: 'http://188.225.47.187/api/jsonstorage/becdad4189eaa8404ae78ea212088da8',
-            currentUserInfo: {},
+            //currentUserInfo: {},
             links: [
                 {
                     label: 'Главная',
@@ -87,20 +87,26 @@ export default {
     computed: {
       settingsPath() {
         return '/settings/' + this.currentUserIndex
+      },
+      // currentUserIndex() {
+      //   return this.$store.getters.currentUserId
+      // }
+      currentUserInfo() {
+        return this.$store.getters.currentUserInfo
       }
     },
-    props: {
-      currentUserIndex: Number
-    },
+    // props: {
+    //   currentUserIndex: Number
+    // },
     methods: {
-      getCurrentUserInfo() {
-        this.axios.get(this.usersApiLink)
-        .then(
-          (response) => {
-            this.currentUserInfo = response.data[this.currentUserIndex]
-          } 
-        )
-      }
+      // getCurrentUserInfo() {
+      //   this.axios.get(this.usersApiLink)
+      //   .then(
+      //     (response) => {
+      //       this.currentUserInfo = response.data[this.currentUserIndex]
+      //     } 
+      //   )
+      // }
     },
     mounted() {
       //alert('created!')

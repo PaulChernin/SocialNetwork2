@@ -33,18 +33,18 @@ export default {
         this.getPosts()
     },
     methods: {
-        getFUserInfo() {
-            //alert('пытаюсь')
-            this.axios.get('https://jsonplaceholder.typicode.com/users/' + this.$route.params.id)
-            .then(response => {
-                //alert(response)
-                this.userInfo = response.data
-            })
-            .catch(() => {
-                alert('не получилось загрузить данные')
-            })
-            //alert('я пытался')
-        },
+        // getFUserInfo() {
+        //     //alert('пытаюсь')
+        //     this.axios.get('https://jsonplaceholder.typicode.com/users/' + this.$route.params.id)
+        //     .then(response => {
+        //         //alert(response)
+        //         this.userInfo = response.data
+        //     })
+        //     .catch(() => {
+        //         alert('не получилось загрузить данные')
+        //     })
+        //     //alert('я пытался')
+        // },
         getUserInfo() {
             this.axios.get(this.usersApiLink)
             .then(
