@@ -1,6 +1,6 @@
 <template>
     <div>
-        <UserInfo :userInfo="userInfo"
+        <UserInfo 
                   ></UserInfo>
 
         <Post v-for="post in posts"
@@ -28,10 +28,10 @@ export default {
             usersApiLink: 'http://188.225.47.187/api/jsonstorage/becdad4189eaa8404ae78ea212088da8'
         }
     },
-    mounted() {
-        this.getUserInfo()
-        this.getPosts()
-    },
+    // mounted() {
+    //     this.getUserInfo()
+    //     this.getPosts()
+    // },
     methods: {
         // getFUserInfo() {
         //     //alert('пытаюсь')
@@ -45,14 +45,14 @@ export default {
         //     })
         //     //alert('я пытался')
         // },
-        getUserInfo() {
-            this.axios.get(this.usersApiLink)
-            .then(
-                (response) => {
-                    this.userInfo = response.data[this.$route.params.id]
-                } 
-            )
-        },
+        // getUserInfo() {
+        //     this.axios.get(this.usersApiLink)
+        //     .then(
+        //         (response) => {
+        //             this.userInfo = response.data[this.$route.params.id]
+        //         } 
+        //     )
+        // },
         getPosts() {
             //alert(`https://jsonplaceholder.typicode.com/user/${this.$route.params.id}/posts`)
             this.axios.get(`https://jsonplaceholder.typicode.com/user/${this.$route.params.id}/posts`)
@@ -71,11 +71,11 @@ export default {
             return `https://randomuser.me/api/portraits/men/${this.$route.params.id}.jpg`
         }
     },
-    watch: {
-        route() {
-            this.getUserInfo()
-            this.getPosts()
-        }
-    }
+    // watch: {
+    //     route() {
+    //         this.getUserInfo()
+    //         this.getPosts()
+    //     }
+    // }
 }
 </script>

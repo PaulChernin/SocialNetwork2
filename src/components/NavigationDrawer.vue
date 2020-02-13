@@ -108,15 +108,15 @@ export default {
       //   )
       // }
     },
-    mounted() {
-      //alert('created!')
-      this.getCurrentUserInfo()
-    },
-    watch: {
-      currentUserIndex() {
-        //alert('changed!')
-        this.getCurrentUserInfo()
-      }
-    }
+    // mounted() {
+    //   //alert('created!')
+    //   this.getCurrentUserInfo()
+    // },
+    // watch: {
+    //   currentUserIndex() {
+    //     //alert('changed!')
+    //     this.getCurrentUserInfo()
+    //   }
+    // }
 }
 </script>

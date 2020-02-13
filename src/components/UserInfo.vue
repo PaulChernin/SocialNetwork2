@@ -33,8 +33,13 @@
 <script>
 export default {
     name: 'UserInfo',
-    props: {
-        userInfo: {}
+    // props: {
+    //     userInfo: {}
+    // }
+    computed: {
+        userInfo() {
+            return this.$store.getters.currentUserInfo
+        }
     }
 }
 </script>
