@@ -10,11 +10,13 @@ export const store = new Vuex.Store({
         apiLinks: {
             users: 'http://188.225.47.187/api/jsonstorage/becdad4189eaa8404ae78ea212088da8'
         },
-        currentUserInfo: {}
+        currentUserInfo: {},
+        usersInfo: []
     },
     getters: {
         currentUserId: (state) => state.currentUserId,
-        currentUserInfo: (state) => state.currentUserInfo
+        currentUserInfo: (state) => state.currentUserInfo,
+        usersInfo: (state) => state.usersInfo
     },
     mutations: {
         updateCurrentUser(state, newId) {
@@ -22,6 +24,9 @@ export const store = new Vuex.Store({
         },
         updateCurrentUserInfo(state, newInfo) {
             state.currentUserInfo = newInfo
+        },
+        updateUsersInfo(state, newInfo) {
+            state.usersInfo = newInfo
         }
     }, 
     actions: {
@@ -35,6 +40,13 @@ export const store = new Vuex.Store({
                 } 
             )
         },
-        
+        updateUsersInfo(ctx) {
+            Axios.get(this.state.apiLinks.users)
+            .then(
+                (response) => {
+                    ctx.commit('updateUsersInfo', response.data)
+                }
+            )
+        }
     }
 })

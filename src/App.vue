@@ -41,7 +41,13 @@ export default {
       //this.currentUserId = index
       //alert('g'),
       this.$store.dispatch('updateCurrentUser', this.newId)
+    },
+    updateUsersInfo() {
+      this.$store.dispatch('updateUsersInfo')
     }
+  },
+  mounted() {
+    this.updateUsersInfo()
   }
 }
 </script>
