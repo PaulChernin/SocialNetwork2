@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -26,7 +27,7 @@ export const store = new Vuex.Store({
     actions: {
         updateCurrentUser(ctx, newId) {
             ctx.commit('updateCurrentUser', newId)
-            this.axios.get(this.state.apiLinks.users)
+            Axios.get(this.state.apiLinks.users)
             .then(
                 (response) => {
                     ctx.commit('updateCurrentUserInfo', response.data[ctx.state.currentUserId])
