@@ -20,16 +20,10 @@ export default {
         UserInfo,
         Post
     },
-    data() {
-        return {
-            //userInfo: null,
-            posts: null,
-            //usersApiLink: 'http://188.225.47.187/api/jsonstorage/becdad4189eaa8404ae78ea212088da8'
-        }
-    },
-    // mounted() {
-    //     this.getUserInfo()
-    //     this.getPosts()
+    // data() {
+    //     return {
+    //         posts: null,
+    //     }
     // },
     methods: {
         getPosts() {
@@ -50,13 +44,8 @@ export default {
         },
         userId() {
             return this.$store.getters.currentUserId
-        }
-    },
-    // watch: {
-    //     route() {
-    //         this.getUserInfo()
-    //         this.getPosts()
-    //     }
-    // }
+        },
+        
+    }
 }
 </script>

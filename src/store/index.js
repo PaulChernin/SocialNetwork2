@@ -9,11 +9,13 @@ export const store = new Vuex.Store({
     state: {
         currentUserId: 1,
         apiLinks: {
-            users: 'http://188.225.47.187/api/jsonstorage/becdad4189eaa8404ae78ea212088da8'
+            users: 'http://188.225.47.187/api/jsonstorage/becdad4189eaa8404ae78ea212088da8',
+            posts: 'http://188.225.47.187/api/jsonstorage/8f3de21c99fab3a8c834b36e63d2d286'
         },
         currentUserInfo: {},
         usersInfo: [],
-        anonymous: true
+        anonymous: true,
+        posts: []
     },
     getters: {
         currentUserId: (state) => state.currentUserId,
@@ -34,6 +36,9 @@ export const store = new Vuex.Store({
         },
         makeAnonymous(state) {
             state.anonymous = true
+        },
+        updatePosts(state, newPosts) {
+            state.posts = newPosts
         }
     }, 
     actions: {
@@ -123,6 +128,15 @@ export const store = new Vuex.Store({
         exit(ctx) {
             ctx.commit('makeAnonymous')
             router.push('/home')
+        },
+        updatePosts(ctx) {
+            Axios.get(this.state.apiLinks.posts)
+            .then(
+                (response) => {
+                    let posts = response.data
+                    ctx.commit('updatePosts', posts)
+                }
+            )
         }
     }
 })

@@ -45,10 +45,14 @@ export default {
     },
     updateUsersInfo() {
       this.$store.dispatch('updateUsersInfo')
+    },
+    updatePosts() {
+      this.$store.dispatch('updatePosts')
     }
   },
   mounted() {
     this.updateUsersInfo()
+    this.updatePosts()
   }
 }
 </script>
