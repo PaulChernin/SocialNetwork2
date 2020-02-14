@@ -7,6 +7,7 @@
         <input type="text" v-model="newId">
         <button @click="updateCurrentUser">update</button>
         {{currentUserId}}
+        {{currentUserInfo}}
         <span v-if="anonymous">anonymous</span>
         <!-- {{currentUserId}} -->
         <router-view v-on:login="updateCurrentUser"/>

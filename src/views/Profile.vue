@@ -1,7 +1,6 @@
 <template>
     <div>
-        <UserInfo 
-                  ></UserInfo>
+        <UserInfo :userId="userId"></UserInfo>
 
         <Post v-for="post in posts"
               :key="post"
@@ -23,7 +22,7 @@ export default {
     },
     data() {
         return {
-            userInfo: null,
+            //userInfo: null,
             posts: null,
             usersApiLink: 'http://188.225.47.187/api/jsonstorage/becdad4189eaa8404ae78ea212088da8'
         }
@@ -33,26 +32,6 @@ export default {
     //     this.getPosts()
     // },
     methods: {
-        // getFUserInfo() {
-        //     //alert('пытаюсь')
-        //     this.axios.get('https://jsonplaceholder.typicode.com/users/' + this.$route.params.id)
-        //     .then(response => {
-        //         //alert(response)
-        //         this.userInfo = response.data
-        //     })
-        //     .catch(() => {
-        //         alert('не получилось загрузить данные')
-        //     })
-        //     //alert('я пытался')
-        // },
-        // getUserInfo() {
-        //     this.axios.get(this.usersApiLink)
-        //     .then(
-        //         (response) => {
-        //             this.userInfo = response.data[this.$route.params.id]
-        //         } 
-        //     )
-        // },
         getPosts() {
             //alert(`https://jsonplaceholder.typicode.com/user/${this.$route.params.id}/posts`)
             this.axios.get(`https://jsonplaceholder.typicode.com/user/${this.$route.params.id}/posts`)
@@ -63,12 +42,14 @@ export default {
             .catch(() => {
                 alert('не получилось загрузить данные')
             })
-            //alert('я пытался')
         }
     },
     computed: {
         imgSrc() {
             return `https://randomuser.me/api/portraits/men/${this.$route.params.id}.jpg`
+        },
+        userId() {
+            return this.$route.params.id
         }
     },
     // watch: {

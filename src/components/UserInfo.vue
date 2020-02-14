@@ -33,12 +33,12 @@
 <script>
 export default {
     name: 'UserInfo',
-    // props: {
-    //     userInfo: {}
-    // }
+    props: {
+        userId: String
+    },
     computed: {
         userInfo() {
-            return this.$store.getters.currentUserInfo
+            return this.$store.getters.usersInfo[parseInt(this.userId)]
         }
     }
 }

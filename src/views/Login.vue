@@ -12,6 +12,7 @@
             ></v-text-field>
 
             <v-text-field
+                type="password"
                 label="Введите пароль"
                 v-model="password"
                 outlined

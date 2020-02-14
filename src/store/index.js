@@ -85,6 +85,7 @@ export const store = new Vuex.Store({
                         () => {
                             ctx.commit('updateUsersInfo', users)
                             ctx.commit('updateCurrentUser', users.length - 1)
+                            router.push('/profile/' + (users.length - 1))
                         }
                     )
                 }
@@ -106,7 +107,7 @@ export const store = new Vuex.Store({
                             //this.$emit('login', index)
                             //ctx.commit('updateCurrentUser', index)
                             this.dispatch('updateCurrentUser', index)
-                            router.push('/profile/' + index);
+                            router.push('/profile/' + index)
                             found = true;
                             break;
                         }
