@@ -47,6 +47,16 @@ export const store = new Vuex.Store({
                     ctx.commit('updateUsersInfo', response.data)
                 }
             )
+        },
+        updateCurrentUserInfo(ctx, newInfo) {
+            Axios.get(this.state.apiLinks.users)
+            .then(
+                (response) => {
+                    let users = response.data;
+                    users[ctx.state.currentUserId] = newInfo
+                    Axios.put(this.state.apiLinks.users, users)
+                }
+            )
         }
     }
 })
