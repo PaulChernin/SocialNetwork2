@@ -7,7 +7,6 @@
         <input type="text" v-model="newId">
         <button @click="updateCurrentUser">update</button>
         {{currentUserId}}
-
         <!-- {{currentUserId}} -->
         <router-view v-on:login="updateCurrentUser"/>
       </v-container>
@@ -34,6 +33,9 @@ export default {
   computed: {
     currentUserId() {
       return this.$store.getters.currentUserId
+    },
+    currentUserInfo() {
+      return this.$store.getters.currentUserInfo
     }
   },
   methods: {

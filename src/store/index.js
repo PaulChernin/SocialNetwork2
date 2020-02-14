@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Axios from 'axios'
+import router from '../router/index.js'
 
 Vue.use(Vuex)
 
@@ -88,6 +89,27 @@ export const store = new Vuex.Store({
             .catch(
                 (response) => {
                     alert(response)
+                }
+            )
+        },
+        login(ctx, info) {
+            Axios.get(this.state.apiLinks.users)
+            .then(
+                (response) => {
+                    let users = response.data;
+                    let found = false;
+                    for (let index in users) {
+                        if (info.login == users[index].login && info.password == users[index].password) {
+                            //this.$emit('login', index)
+                            //ctx.commit('updateCurrentUser', index)
+                            this.dispatch('updateCurrentUser', index)
+                            router.push('/profile/' + index);
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) 
+                        window.alert('wrong password or login')
                 }
             )
         }

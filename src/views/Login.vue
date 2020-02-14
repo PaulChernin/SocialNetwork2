@@ -35,23 +35,7 @@ export default {
     },
     methods: {
         authenticate() {
-            this.axios.get('http://188.225.47.187/api/jsonstorage/becdad4189eaa8404ae78ea212088da8')
-            .then(
-                (response) => {
-                    let users = response.data;
-                    let found = false;
-                    for (let index in users) {
-                        if (this.login == users[index].login && this.password == users[index].password) {
-                            this.$emit('login', index)
-                            this.$router.push('/profile/' + index);
-                            found = true;
-                            break;
-                        }
-                    }
-                    if (!found) 
-                        window.alert('wrong password or login')
-                }
-            )
+            this.$store.dispatch('login', {login : this.login, password : this.password})
         }
     }
 }
