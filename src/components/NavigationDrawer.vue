@@ -15,7 +15,7 @@
             <img :src="currentUserInfo.photo">
           </v-list-item-avatar>
           <v-list-item-content class="text-left">
-            <v-list-item-title class="font-weight-black">SocialLink</v-list-item-title>
+            <v-list-item-title class="font-weight-black">VueNet</v-list-item-title>
             <v-list-item-subtitle>{{currentUserInfo.name}}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>

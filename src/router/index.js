@@ -40,6 +40,10 @@ const routes = [
   {
     path: '/settings',
     component: Settings,
+  },
+  {
+    path: '',
+    redirect: '/home'
   }
 ]
 

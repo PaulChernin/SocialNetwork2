@@ -1,8 +1,15 @@
 <template>
   <div class="home">
-    <v-toolbar-title>Social Network</v-toolbar-title>
+    <v-toolbar-title>VueNet</v-toolbar-title>
     <img alt="Vue logo" src="../assets/logo.png">
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <div>
+      <v-btn color="green" link to="/login">
+        Войти
+      </v-btn>
+      <v-btn link to="/newuser">
+        Зарегистрироваться
+      </v-btn>
+    </div>
   </div>
 </template>
 
