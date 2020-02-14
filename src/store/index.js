@@ -12,16 +12,19 @@ export const store = new Vuex.Store({
             users: 'http://188.225.47.187/api/jsonstorage/becdad4189eaa8404ae78ea212088da8'
         },
         currentUserInfo: {},
-        usersInfo: []
+        usersInfo: [],
+        anonymous: true
     },
     getters: {
         currentUserId: (state) => state.currentUserId,
         currentUserInfo: (state) => state.currentUserInfo,
-        usersInfo: (state) => state.usersInfo
+        usersInfo: (state) => state.usersInfo,
+        anonymous: (state) => state.anonymous
     },
     mutations: {
         updateCurrentUser(state, newId) {
-            state.currentUserId = newId
+            state.currentUserId = newId,
+            state.anonymous = false
         },
         updateCurrentUserInfo(state, newInfo) {
             state.currentUserInfo = newInfo

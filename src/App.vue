@@ -7,6 +7,7 @@
         <input type="text" v-model="newId">
         <button @click="updateCurrentUser">update</button>
         {{currentUserId}}
+        <span v-if="anonymous">anonymous</span>
         <!-- {{currentUserId}} -->
         <router-view v-on:login="updateCurrentUser"/>
       </v-container>
@@ -23,11 +24,7 @@ export default {
   },
   data() {
     return {
-      //currentUserId: 1,
       newId: 0,
-      apiLinks: {
-        users: 'http://188.225.47.187/api/jsonstorage/becdad4189eaa8404ae78ea212088da8'
-      }
     }
   },
   computed: {
@@ -36,12 +33,13 @@ export default {
     },
     currentUserInfo() {
       return this.$store.getters.currentUserInfo
+    },
+    anonymous() {
+      return this.$store.getters.anonymous
     }
   },
   methods: {
     updateCurrentUser() {
-      //this.currentUserId = index
-      //alert('g'),
       this.$store.dispatch('updateCurrentUser', this.newId)
     },
     updateUsersInfo() {
