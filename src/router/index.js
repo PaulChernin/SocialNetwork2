@@ -6,6 +6,7 @@ import Search from '../views/Search.vue'
 import Login from '../views/Login.vue'
 import NewUser from '../views/NewUser.vue'
 import Settings from '../views/Settings.vue'
+import MyProfile from '../views/MyProfile.vue'
 
 Vue.use(VueRouter)
 
@@ -44,6 +45,10 @@ const routes = [
   {
     path: '',
     redirect: '/home'
+  },
+  {
+    path: '/myprofile',
+    component: MyProfile
   }
 ]
 

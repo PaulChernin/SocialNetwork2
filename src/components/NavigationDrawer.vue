@@ -55,15 +55,15 @@ export default {
         return {
             links: [
                 {
-                    label: 'Главная',
-                    path: '/home',
+                    label: 'Мой профиль',
+                    path: '/myprofile',
                     icon: 'mdi-home-outline'
                 },
-                {
-                    label: 'Профиль',
-                    path: '/profile/1',
-                    icon: 'mdi-account-outline'
-                },
+                // {
+                //     label: 'Профиль',
+                //     path: '/profile/1',
+                //     icon: 'mdi-account-outline'
+                // },
                 {
                     label: 'Найти',
                     path: '/search',
