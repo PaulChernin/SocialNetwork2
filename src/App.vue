@@ -4,12 +4,12 @@
 
     <v-content class="px-12 py-3">
       <v-container fluid>
-        <input type="text" v-model="newId">
+        <!-- <input type="text" v-model="newId">
         <button @click="updateCurrentUser">update</button>
         {{currentUserId}}
         {{currentUserInfo}}
-        <span v-if="anonymous">anonymous</span>
-        <!-- {{currentUserId}} -->
+        <span v-if="anonymous">anonymous</span> -->
+
         <router-view v-on:login="updateCurrentUser"/>
       </v-container>
     </v-content>

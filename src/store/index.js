@@ -79,7 +79,7 @@ export const store = new Vuex.Store({
                         email: 'Не указано',
                         city: 'Не указано',
                         company: 'Не указано',
-                        photo: 'https://randomuser.me/api/portraits/men/4.jpg',
+                        photo: 'https://media.pn.am/media/issue/197/297/photo/197297.jpg',
                         id: users.length
                     }
                     users.push(newUser)
@@ -87,8 +87,8 @@ export const store = new Vuex.Store({
                     .then(
                         () => {
                             ctx.commit('updateUsersInfo', users)
-                            ctx.commit('updateCurrentUser', users.length - 1)
-                            router.push('/profile/' + (users.length - 1))
+                            ctx.dispatch('updateCurrentUser', users.length - 1)
+                            router.push('/myprofile/')
                         }
                     )
                 }
@@ -109,8 +109,8 @@ export const store = new Vuex.Store({
                         if (info.login == users[index].login && info.password == users[index].password) {
                             //this.$emit('login', index)
                             //ctx.commit('updateCurrentUser', index)
-                            this.dispatch('updateCurrentUser', index)
-                            router.push('/profile/' + index)
+                            ctx.dispatch('updateCurrentUser', index)
+                            router.push('/myprofile')
                             found = true;
                             break;
                         }
