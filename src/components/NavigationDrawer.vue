@@ -25,7 +25,7 @@
         <v-list-item link
                      :to="link.path"
                      :key="link.path"
-                     v-for="link in links">
+                     v-for="link in currentLinks">
           <v-list-item-icon>
             <v-icon>{{link.icon}}</v-icon>
           </v-list-item-icon>
@@ -34,7 +34,7 @@
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link
+        <!-- <v-list-item link
                      :to="settingsPath">
           <v-list-item-icon>
             <v-icon>mdi-settings-outline</v-icon>
@@ -42,7 +42,7 @@
           <v-list-item-content>
             <v-list-item-title class="text-left">Настройки</v-list-item-title>
           </v-list-item-content>
-        </v-list-item>
+        </v-list-item> -->
 
       </v-list>
     </v-navigation-drawer>
@@ -53,8 +53,6 @@ export default {
     name: 'NavigationDrawer',
     data() {
         return {
-            usersApiLink: 'http://188.225.47.187/api/jsonstorage/becdad4189eaa8404ae78ea212088da8',
-            //currentUserInfo: {},
             links: [
                 {
                     label: 'Главная',
@@ -72,6 +70,18 @@ export default {
                     icon: 'mdi-account-search-outline'
                 },
                 {
+                    label: 'Настройки',
+                    path: '/settings',
+                    icon: 'mdi-settings-outline'
+                }
+            ],
+            anonymousLinks: [
+                {
+                    label: 'Главная',
+                    path: '/home',
+                    icon: 'mdi-home-outline'
+                },
+                {
                     label: 'Войти',
                     path: '/login',
                     icon: 'mdi-account-key-outline'
@@ -80,7 +90,7 @@ export default {
                     label: 'Регистрация',
                     path: '/newuser',
                     icon: 'mdi-account-plus-outline'
-                }
+                },
             ]
         }
     },
@@ -88,35 +98,18 @@ export default {
       settingsPath() {
         return '/settings/' + this.currentUserIndex
       },
-      // currentUserIndex() {
-      //   return this.$store.getters.currentUserId
-      // }
       currentUserInfo() {
         return this.$store.getters.currentUserInfo
+      },
+      anonymous() {
+        return this.$store.getters.anonymous
+      },
+      currentLinks() {
+        if (this.anonymous) {
+          return this.anonymousLinks
+        }
+        return this.links
       }
     },
-    // props: {
-    //   currentUserIndex: Number
-    // },
-    methods: {
-      // getCurrentUserInfo() {
-      //   this.axios.get(this.usersApiLink)
-      //   .then(
-      //     (response) => {
-      //       this.currentUserInfo = response.data[this.currentUserIndex]
-      //     } 
-      //   )
-      // }
-    },
-    // mounted() {
-    //   //alert('created!')
-    //   this.getCurrentUserInfo()
-    // },
-    // watch: {
-    //   currentUserIndex() {
-    //     //alert('changed!')
-    //     this.getCurrentUserInfo()
-    //   }
-    // }
 }
 </script>

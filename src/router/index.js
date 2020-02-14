@@ -38,7 +38,7 @@ const routes = [
     component: NewUser
   },
   {
-    path: '/settings/:id',
+    path: '/settings',
     component: Settings,
   }
 ]
