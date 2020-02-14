@@ -1,55 +1,18 @@
 <template>
-    <div>
-        <UserInfo :userId="userId"></UserInfo>
-
-        <Post v-for="(post, index) in posts"
-              :key="index"
-              :userName="userInfo.name"
-              :text="post.text"
-              :imgSrc="imgSrc"></Post>
-    </div>
+    <DefaultProfile :userId="currentUserId"></DefaultProfile>
 </template>
 
 <script>
-import UserInfo from '../components/UserInfo'
-import Post from '../components/Post'
+import DefaultProfile from '../components/DefaultProfile'
 
 export default {
-    name: 'Profile',
+    name: 'MyProfile',
     components: {
-        UserInfo,
-        Post
+        DefaultProfile
     },
-    // data() {
-    //     return {
-    //         posts: null,
-    //     }
-    // },
-    // methods: {
-    //     getPosts() {
-    //         //alert(`https://jsonplaceholder.typicode.com/user/${this.$route.params.id}/posts`)
-    //         this.axios.get(`https://jsonplaceholder.typicode.com/user/${this.$route.params.id}/posts`)
-    //         .then(response => {
-    //             //alert(response)
-    //             this.posts = response.data
-    //         })
-    //         .catch(() => {
-    //             alert('не получилось загрузить данные')
-    //         })
-    //     }
-    // },
     computed: {
-        imgSrc() {
-            return `https://randomuser.me/api/portraits/men/${this.$route.params.id}.jpg`
-        },
-        userId() {
+        currentUserId() {
             return this.$store.getters.currentUserId
-        },
-        posts() {
-            return this.$store.getters.posts
-        },
-        userInfo() {
-            return this.$store.getters.currentUserInfo
         }
     }
 }
