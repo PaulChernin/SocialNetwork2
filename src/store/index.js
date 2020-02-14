@@ -55,6 +55,39 @@ export const store = new Vuex.Store({
                     let users = response.data;
                     users[ctx.state.currentUserId] = newInfo
                     Axios.put(this.state.apiLinks.users, users)
+                    ctx.commit('updateUsersInfo', users)
+                }
+            )
+        },
+        newUser(ctx, info) {
+            Axios.get(this.state.apiLinks.users)
+            .then(
+                (response) => {
+                    let users = response.data;
+                    let newUser = {
+                        login: info.login,
+                        password: info.password,
+                        name: info.login,
+                        website: 'Не указано',
+                        email: 'Не указано',
+                        city: 'Не указано',
+                        company: 'Не указано',
+                        photo: 'https://randomuser.me/api/portraits/men/4.jpg',
+                        id: users.length
+                    }
+                    users.push(newUser)
+                    Axios.put(this.state.apiLinks.users, users)
+                    .then(
+                        () => {
+                            ctx.commit('updateUsersInfo', users)
+                            ctx.commit('updateCurrentUser', users.length - 1)
+                        }
+                    )
+                }
+            )
+            .catch(
+                (response) => {
+                    alert(response)
                 }
             )
         }

@@ -31,30 +31,12 @@ export default {
         return {
             login: '',
             password: '',
-            usersApiLink: 'http://188.225.47.187/api/jsonstorage/becdad4189eaa8404ae78ea212088da8',
+            //usersApiLink: 'http://188.225.47.187/api/jsonstorage/becdad4189eaa8404ae78ea212088da8',
         }
     },
     methods: {
         signUp() {
-            this.axios.get(this.usersApiLink)
-            .then(
-                (response) => {
-                    let users = response.data;
-                    let newUser = {
-                        login: this.login,
-                        password: this.password,
-                        name: this.login,
-                        website: '',
-                        email: '',
-                        city: '',
-                        company: '',
-                        photo: 'https://randomuser.me/api/portraits/men/4.jpg',
-                        id: users.length
-                    }
-                    users.push(newUser)
-                    this.axios.put(this.usersApiLink, users)
-                }
-            )
+            this.$store.dispatch('newUser', {login : this.login, password : this.password})
         }
     }
 }
