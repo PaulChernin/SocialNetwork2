@@ -2,10 +2,10 @@
     <div>
         <UserInfo :userId="userId"></UserInfo>
 
-        <Post v-for="post in posts"
-              :key="post"
+        <Post v-for="(post, index) in posts"
+              :key="index"
               :userName="userInfo.name"
-              :text="post.body"
+              :text="post.text"
               :imgSrc="imgSrc"></Post>
     </div>
 </template>
@@ -25,19 +25,19 @@ export default {
     //         posts: null,
     //     }
     // },
-    methods: {
-        getPosts() {
-            //alert(`https://jsonplaceholder.typicode.com/user/${this.$route.params.id}/posts`)
-            this.axios.get(`https://jsonplaceholder.typicode.com/user/${this.$route.params.id}/posts`)
-            .then(response => {
-                //alert(response)
-                this.posts = response.data
-            })
-            .catch(() => {
-                alert('не получилось загрузить данные')
-            })
-        }
-    },
+    // methods: {
+    //     getPosts() {
+    //         //alert(`https://jsonplaceholder.typicode.com/user/${this.$route.params.id}/posts`)
+    //         this.axios.get(`https://jsonplaceholder.typicode.com/user/${this.$route.params.id}/posts`)
+    //         .then(response => {
+    //             //alert(response)
+    //             this.posts = response.data
+    //         })
+    //         .catch(() => {
+    //             alert('не получилось загрузить данные')
+    //         })
+    //     }
+    // },
     computed: {
         imgSrc() {
             return `https://randomuser.me/api/portraits/men/${this.$route.params.id}.jpg`
@@ -45,7 +45,12 @@ export default {
         userId() {
             return this.$store.getters.currentUserId
         },
-        
+        posts() {
+            return this.$store.getters.posts
+        },
+        userInfo() {
+            return this.$store.getters.currentUserInfo
+        }
     }
 }
 </script>

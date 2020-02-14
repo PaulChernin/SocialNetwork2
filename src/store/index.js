@@ -21,7 +21,8 @@ export const store = new Vuex.Store({
         currentUserId: (state) => state.currentUserId,
         currentUserInfo: (state) => state.currentUserInfo,
         usersInfo: (state) => state.usersInfo,
-        anonymous: (state) => state.anonymous
+        anonymous: (state) => state.anonymous,
+        posts: (state) => state.posts
     },
     mutations: {
         updateCurrentUser(state, newId) {
