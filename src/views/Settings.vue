@@ -39,6 +39,13 @@
       Сохранить
     </v-btn>
 
+    <v-btn
+      class="mr-4"
+      @click="exit"
+    >
+      Выйти
+    </v-btn>
+
     <v-btn v-if="currentUserId == 0"
       color="error"
       class="mr-4"
@@ -74,6 +81,9 @@
               let template = [{"login":"admin","password":"1234","name":"Админ","website":"admin.pro","email":"admin@mail.com","city":"Москва","company":"Social Link","photo":"https://mskvienna.ru/files/news_imgs/1567890413.jpg","id":0},{"login":"kjh","password":".u","name":"Jack","company":"Sailor","id":1},{"login":"paul","password":"222","name":"Paul","company":"programmer","id":2},{"login":"acc3","password":"pass3","name":"acc3","website":"acc3.ru","email":"","city":"","company":"","photo":"https://randomuser.me/api/portraits/men/4.jpg","id":3},{"login":"acc4","password":"pass4","name":"acc4","website":"","email":"","city":"","company":"","photo":"https://randomuser.me/api/portraits/men/4.jpg","id":4}]
 
               this.axios.put(this.usersApiLink, template)
+            },
+            exit() {
+              this.$store.dispatch('exit')
             }
         },
         mounted() {

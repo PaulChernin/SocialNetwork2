@@ -11,9 +11,13 @@
               dense>
 
         <v-list-item two-line>
-          <v-list-item-avatar>
+          <v-list-item-avatar v-if="!anonymous">
             <img :src="currentUserInfo.photo">
           </v-list-item-avatar>
+          <v-list-item-avatar v-if="anonymous" tile>
+            <img src="../assets/logo.png">
+          </v-list-item-avatar>
+          
           <v-list-item-content class="text-left">
             <v-list-item-title class="font-weight-black">VueNet</v-list-item-title>
             <v-list-item-subtitle>{{currentUserInfo.name}}</v-list-item-subtitle>

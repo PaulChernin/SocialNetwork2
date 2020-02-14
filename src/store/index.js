@@ -31,6 +31,9 @@ export const store = new Vuex.Store({
         },
         updateUsersInfo(state, newInfo) {
             state.usersInfo = newInfo
+        },
+        makeAnonymous(state) {
+            state.anonymous = true
         }
     }, 
     actions: {
@@ -116,6 +119,10 @@ export const store = new Vuex.Store({
                         window.alert('wrong password or login')
                 }
             )
+        },
+        exit(ctx) {
+            ctx.commit('makeAnonymous')
+            router.push('/home')
         }
     }
 })
