@@ -1,5 +1,29 @@
 <template>
-    <DefaultProfile :userId="currentUserId"></DefaultProfile>
+    <DefaultProfile :userId="currentUserId">
+        <v-btn
+            v-if="!posting"
+            @click="postingOn"
+            color="green"
+            dark>
+            Новый пост
+        </v-btn>
+        <v-btn
+            v-if="posting"
+            @click="post"
+            color="green"
+            dark>
+            Отправить
+        </v-btn>
+        <v-btn
+            v-if="posting"
+            @click="postingOff">
+            Отмена
+        </v-btn>
+        <v-textarea
+            v-if="posting"
+            filled
+            v-model="newPost"></v-textarea>
+    </DefaultProfile>
 </template>
 
 <script>
@@ -13,6 +37,24 @@ export default {
     computed: {
         currentUserId() {
             return this.$store.getters.currentUserId
+        }
+    },
+    data() {
+        return {
+            newPost: '',
+            posting: false
+        }
+    },
+    methods: {
+        postingOn() {
+            this.posting = true
+        },
+        postingOff() {
+            this.posting = false
+        },
+        post() {
+            this.$store.dispatch('newPost', this.newPost)
+            this.postingOff()
         }
     }
 }

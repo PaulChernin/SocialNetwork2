@@ -138,6 +138,25 @@ export const store = new Vuex.Store({
                     ctx.commit('updatePosts', posts)
                 }
             )
+        },
+        newPost(ctx, newText) {
+            Axios.get(this.state.apiLinks.posts)
+            .then(
+                (response) => {
+                    let posts = response.data;
+                    let newPost = {
+                        userId: ctx.state.currentUserId,
+                        text: newText
+                    }
+                    posts.push(newPost)
+                    Axios.put(this.state.apiLinks.posts, posts)
+                    .then(
+                        () => {
+                            ctx.dispatch('updatePosts')
+                        }
+                    )
+                }
+            )
         }
     }
 })
