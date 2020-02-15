@@ -8,14 +8,12 @@
             <v-text-field
                 label="Введите логин"
                 v-model="login"
-                outlined
             ></v-text-field>
 
             <v-text-field
                 type="password"
                 label="Введите пароль"
                 v-model="password"
-                outlined
             ></v-text-field>
 
             <v-btn @click="authenticate">
