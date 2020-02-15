@@ -33,9 +33,9 @@ export default {
         link() {
           return '/profile/' + this.userInfo.id
         },
-        imgSrc() {
-          return `https://randomuser.me/api/portraits/men/${this.userInfo.id}.jpg`
-        }
+        // imgSrc() {
+        //   return `https://randomuser.me/api/portraits/men/${this.userInfo.id}.jpg`
+        // }
     }
 }
 </script>
